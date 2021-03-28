@@ -1,0 +1,35 @@
+# Maintainer: Andrey Alekseev <andrey.android7890@gmail.com>
+
+pkgname=('bootsplash-theme-black-mirror')   
+pkgver=1.0
+pkgrel=1
+arch=('x86_64')
+pkgdesc="Bootsplash of the Black Mirror Logo"
+license=('GPL')
+depends=()
+optdepends=('bootsplash-systemd: for bootsplash functionality')
+builddepends=('imagemagick')
+options=('!libtool' '!emptydirs')
+
+source=('bootsplash-packer'
+	'bootsplash-black-mirror.sh'
+	'bootsplash-black-mirror.initcpio_install'
+	'logo.gif')
+
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+build() {
+  cd "$srcdir"
+  sh ./bootsplash-black-mirror.sh
+}
+
+package_bootsplash-theme-black-mirror() {
+  pkgdesc="Bootsplash of the Black Mirror Logo"
+  cd "$srcdir"
+
+  install -Dm644 "$srcdir/bootsplash-black-mirror" "$pkgdir/usr/lib/firmware/bootsplash-themes/black-mirror/bootsplash"
+  install -Dm644 "$srcdir/bootsplash-black-mirror.initcpio_install" "$pkgdir/usr/lib/initcpio/install/bootsplash-black-mirror"
+}

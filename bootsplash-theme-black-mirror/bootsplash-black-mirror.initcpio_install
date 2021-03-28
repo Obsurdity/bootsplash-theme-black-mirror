@@ -1,0 +1,11 @@
+build() {
+        # add black mirror bootsplash
+	add_binary /usr/lib/firmware/bootsplash-themes/black-mirror/bootsplash /usr/lib/firmware/bootsplash-themes/black-mirror/bootsplash
+}
+
+help() {
+	echo "This hook includes the initramfs image."
+}
+
+# vim: set ft=sh:
+#EOF
